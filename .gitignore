@@ -428,6 +428,10 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
+
 # Visual Studio Installer Projects output folder
 *.vdproj
 *.vcdbs
+*.vdproj.filters
+*.vdproj.user
+

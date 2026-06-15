@@ -105,11 +105,11 @@
             const double PI = Math.PI; //~3.14159... 
 
             Console.Write("Enter radius of the circle: ");
-            r = int.Parse(Console.ReadLine());
+            r = double.Parse(Console.ReadLine());
 
             double l = 2 * PI * r;
             double S = PI * r * r;
-            double V = 4 / 3 * PI * r * r * r;
+            double V = 4.0 / 3 * PI * r * r * r;
 
             Console.WriteLine($"Length: {l}, Area: {S}, Volume: {V}");
         }

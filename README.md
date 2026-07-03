@@ -2,8 +2,8 @@
 
 This repository contains the code and materials for the lessons in the UA-5724 course. Each lesson is organized in its own directory, with accompanying code examples, exercises, and resources.
 
-
 # HW
+
 - [Homework #1: Working with Git and Branching](hw/hw01/README.md)
 - [Homework #2: Console Applications](hw/hw02/README.md)
 - [Homework #3: Methods and Arrays](hw/hw03/README.md)
@@ -11,18 +11,17 @@ This repository contains the code and materials for the lessons in the UA-5724 c
 - [Homework #5: Classes and Objects](hw/hw05/README.md)
 - [Homework #6: Interfaces and Collections](hw/hw06/README.md)
 - [Homework #7: Abstract Classes and Polymorphism](hw/hw07/README.md)
-- [Homework #8: Handling Exceptions and Working with Files and directories](hw/hw08/README.md)
+- [Homework #8: Handling Exceptions and Working with Files and Directories](hw/hw08/README.md)
 - [Homework #9: Composition and Aggregation + Unit Testing](hw/hw09/README.md)
 - [Homework #10: Advanced C# Topics](hw/hw10/README.md)
 
-Below is a README section you can copy directly into your GitHub repository.
+---
 
+# 📤 How to Submit Your Homework
 
-## 📤 How to Submit Your Homework
+Follow these steps to submit your homework correctly.
 
-To submit your homework, please follow these steps carefully.
-
-### 1. Update your local `main` branch
+## 1. Update your local `main` branch
 
 Before starting your homework, make sure your local `main` branch is up to date.
 
@@ -31,29 +30,31 @@ git checkout main
 git pull origin main
 ```
 
-### 2. Create a new branch
+## 2. Create a new branch
 
 Create a new branch from the updated `main` branch.
 
->
-> **Branch naming example:**
-> ```text
-> homework/hwNN-your-nickname
-> ```
->
-> Example:
->
-> ```text
-> homework/hw03-johndoe
-> ```
+**Branch naming convention**
+
+```text
+homework/hwNN-your-nickname
+```
+
+Example:
+
+```text
+homework/hw03-johndoe
+```
+
+Create the branch:
 
 ```bash
 git checkout -b homework/hwNN-your-nickname
 ```
 
-### 3. Add your solution
+## 3. Add your solution
 
-Place your implementation in the following directory structure:
+Place your implementation in the following directory:
 
 ```text
 hw/
@@ -68,45 +69,87 @@ Example:
 hw/
 └── hw03/
     └── JohnDoe/
-        ├── solution.js
-        ├── README.md
-        └── assets/
+        ├── Program.cs
+        └── ...
 ```
 
-### 4. Commit your changes
-
-Stage all changes and create a meaningful commit.
+## 4. Commit your changes
 
 ```bash
 git add .
 git commit -m "Add homework HWNN by <Nickname>"
 ```
 
-### 5. Push your branch
-
-Upload your branch to the remote repository.
+## 5. Push your branch
 
 ```bash
 git push -u origin homework/hwNN-your-nickname
 ```
 
-### 6. Create a Pull Request
+## 6. Keep your branch up to date (if `main` changes)
 
-Open a Pull Request from your branch to the **`main`** branch.
+If new commits are added to the `main` branch before your Pull Request is merged, update your branch before continuing your work or requesting a review.
 
-Please ensure that:
+### Step 1. Save your work
 
-- ✅ Your branch is created from the latest `main`.
-- ✅ Your homework is placed in the correct folder.
+```bash
+git add .
+git commit -m "WIP: save current progress"
+```
+
+### Step 2. Update `main`
+
+```bash
+git checkout main
+git pull origin main
+```
+
+### Step 3. Merge the latest `main` into your branch
+
+```bash
+git checkout homework/hwNN-your-nickname
+git merge main
+```
+
+If Git reports merge conflicts:
+
+- Resolve the conflicts.
+- Save the affected files.
+- Complete the merge:
+
+```bash
+git add .
+git commit
+```
+
+### Step 4. Push the updated branch
+
+```bash
+git push
+```
+
+> **Note:** Do **not** create a new branch. Continue working in the same homework branch.
+
+## 7. Create a Pull Request
+
+Open a Pull Request from your homework branch to the **`main`** branch.
+
+Before submitting, verify that:
+
+- ✅ Your branch was created from the latest `main`.
+- ✅ Your homework is located in the correct directory.
 - ✅ The project builds successfully (if applicable).
-- ✅ The Pull Request title clearly identifies your homework.
+- ✅ Your Pull Request targets the `main` branch.
+- ✅ The Pull Request title clearly identifies the homework.
 
-### ✔ Submission Checklist
+---
+
+# ✅ Submission Checklist
 
 - [ ] Updated the local `main` branch
-- [ ] Created a new branch from `main`
-- [ ] Added the solution to `hw/<hwNN>/<Nickname>/`
-- [ ] Committed all changes
+- [ ] Created a homework branch from `main`
+- [ ] Added the solution to `hw/hwNN/<Nickname>/`
+- [ ] Committed the changes
 - [ ] Pushed the branch to GitHub
+- [ ] Updated the branch if `main` changed
 - [ ] Created a Pull Request targeting `main`
-

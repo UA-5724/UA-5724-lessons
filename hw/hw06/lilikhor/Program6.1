@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Program61
+{
+    public interface IFlyable
+    {
+        void Fly();
+    }
+
+    public class Bird : IFlyable
+    {
+        public string Name { get; set; }
+        public bool CanFly { get; set; }
+
+        public Bird(string name, bool canFly)
+        {
+            Name = name;
+            CanFly = canFly;
+        }
+
+        public void Fly()
+        {
+            if (CanFly)
+            {
+                Console.WriteLine($"The bird {Name} can fly.");
+            }
+            else
+            {
+                Console.WriteLine($"The bird {Name} cannot fly.");
+            }
+        }
+    }
+
+    public class Plane : IFlyable
+    {
+        public string Mark { get; set; }
+        public int HighFly { get; set; }
+
+        public Plane(string mark, int highFly)
+        {
+            Mark = mark;
+            HighFly = highFly;
+        }
+
+        public void Fly()
+        {
+            Console.WriteLine(
+                $"The plane {Mark} flies at an altitude of {HighFly} metres."
+            );
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            List<IFlyable> items = new List<IFlyable>
+            {
+                new Bird("Eagle", true),
+                new Bird("Penguin", false),
+                new Bird("Sparrow", true),
+                new Plane("Boeing 737", 10000),
+                new Plane("Airbus A320", 12000)
+            };
+
+            foreach (IFlyable item in items)
+            {
+                item.Fly();
+            }
+        }
+    }
+}

@@ -1,0 +1,4 @@
+Alpha circle: area = 12.57, perimeter = 12.57
+Big circle: area = 78.54, perimeter = 31.42
+Beta square: area = 16, perimeter = 16
+Large square: area = 81, perimeter = 36

@@ -1,0 +1,88 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace SampleCode
+{
+    public enum ReportKind
+    {
+        Plain,
+        Detailed,
+        Summary
+    }
+    public class ReportRow
+    {
+        private readonly string title;
+        private readonly int weight;
+        public ReportRow(string title, int weight)
+        {
+            this.title = title;
+            this.weight = weight;
+        }
+        public string Title
+        {
+            get { return title; }
+        }
+        public int Weight
+        {
+            get { return weight; }
+        }
+        public override string ToString()
+        {
+            return title + " (" + weight + ")";
+        }
+    }
+    internal class Report
+    {
+        private readonly List<ReportRow> rows = new List<ReportRow>();
+        private ReportKind kind = ReportKind.Plain;
+        public void Build(IEnumerable<string> source)
+        {
+            var prepared = source.Where(item => !string.IsNullOrWhiteSpace(item)).ToList();
+            foreach (string item in prepared)
+            {
+                rows.Add(new ReportRow(item.Trim(), item.Trim().Length));
+            }
+        }
+        public string Render()
+        {
+            var builder = new StringBuilder();
+            foreach (ReportRow row in rows)
+            {
+                builder.AppendLine(row.ToString());
+            }
+            return builder.ToString();
+        }
+        public int Count
+        {
+            get { return rows.Count; }
+        }
+        public ReportKind Kind
+        {
+            get { return kind; }
+            set { kind = value; }
+        }
+        public IEnumerable<ReportRow> LongRows(int minimalLength)
+        {
+            var filtered = rows.Where(row => row.Title.Length >= minimalLength).OrderByDescending(row => row.Weight);
+            return filtered;
+        }
+        public Dictionary<string, int> GroupByFirstLetter()
+        {
+            var groups = rows.GroupBy(row => row.Title.Substring(0, 1)).ToDictionary(group => group.Key, group => group.Count());
+            return groups;
+        }
+        public double AverageWeight()
+        {
+            if (rows.Count == 0)
+            {
+                return 0;
+            }
+            return rows.Average(row => row.Weight);
+        }
+        public void Clear()
+        {
+            rows.Clear();
+        }
+    }
+}

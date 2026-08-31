@@ -1,0 +1,5 @@
+Small circle: area = 0.79, perimeter = 3.14
+Alpha circle: area = 12.57, perimeter = 12.57
+Tiny square: area = 1, perimeter = 4
+Beta square: area = 16, perimeter = 16
+Large square: area = 81, perimeter = 36

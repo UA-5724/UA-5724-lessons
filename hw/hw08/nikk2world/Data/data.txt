@@ -1,0 +1,6 @@
+Exception handling in C#
+The try block contains code that may throw an exception.
+The catch block handles a specific type of exception.
+The finally block always runs, whether an exception occurred or not.
+StreamReader reads text line by line.
+StreamWriter writes text to a file.

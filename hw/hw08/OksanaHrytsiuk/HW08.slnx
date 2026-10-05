@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="Task 4.1 — StreamReader та StreamWriter/Task4.1_StreamReader та StreamWriter.csproj" />
+  <Project Path="Task01_ExceptionHandling/Task01_ExceptionHandling.csproj" />
+  <Project Path="Task02_CustomException/Task02_CustomException.csproj" />
+  <Project Path="Task03_ValidateInputRange/Task03_ValidateInputRange.csproj" />
+  <Project Path="Task4.2_FileWriteAllText/Task4.2_FileWriteAllText.csproj" Id="396fd283-3e9a-4ce6-ba77-815412f32d39" />
+  <Project Path="Task5_Directory/Task5_Directory.csproj" Id="c9782f2b-7125-46f2-bc72-0205a20fc02e" />
+  <Project Path="Task6_Read_Only.txt Files/Task6_Read_Only.txt Files.csproj" Id="c88a1c88-495f-45d6-9958-c67874c94382" />
+  <Project Path="Task7_PhoneBook/Task7_PhoneBook.csproj" Id="0a8f83aa-d1c1-428e-9970-4b3298f61d8f" />
+</Solution>

@@ -1,0 +1,138 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Program63
+{
+    public interface IDeveloper : IComparable<IDeveloper>
+    {
+        string Tool { get; }
+
+        void Create();
+        void Destroy();
+    }
+
+    public class Programmer : IDeveloper
+    {
+        public string Language { get; set; }
+
+        public string Tool
+        {
+            get { return Language; }
+        }
+
+        public Programmer(string language)
+        {
+            Language = language;
+        }
+
+        public void Create()
+        {
+            Console.WriteLine(
+                $"The programmer creates a program using {Language}."
+            );
+        }
+
+        public void Destroy()
+        {
+            Console.WriteLine(
+                $"The programmer deletes a {Language} program."
+            );
+        }
+
+        public int CompareTo(IDeveloper other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+
+            return string.Compare(
+                Tool,
+                other.Tool,
+                StringComparison.OrdinalIgnoreCase
+            );
+        }
+
+        public override string ToString()
+        {
+            return $"Programmer: {Language}";
+        }
+    }
+
+    public class Builder : IDeveloper
+    {
+        public string Tool { get; set; }
+
+        public Builder(string tool)
+        {
+            Tool = tool;
+        }
+
+        public void Create()
+        {
+            Console.WriteLine(
+                $"The builder creates a structure using a {Tool}."
+            );
+        }
+
+        public void Destroy()
+        {
+            Console.WriteLine(
+                $"The builder destroys a structure using a {Tool}."
+            );
+        }
+
+        public int CompareTo(IDeveloper other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+
+            return string.Compare(
+                Tool,
+                other.Tool,
+                StringComparison.OrdinalIgnoreCase
+            );
+        }
+
+        public override string ToString()
+        {
+            return $"Builder: {Tool}";
+        }
+    }
+
+    internal class Program
+    {
+        static void Main()
+        {
+            List<IDeveloper> developers = new List<IDeveloper>
+            {
+                new Programmer("C#"),
+                new Programmer("Python"),
+                new Programmer("Java"),
+                new Builder("Hammer"),
+                new Builder("Drill"),
+                new Builder("Saw")
+            };
+
+            Console.WriteLine("Developer actions:\n");
+
+            foreach (IDeveloper developer in developers)
+            {
+                developer.Create();
+                developer.Destroy();
+                Console.WriteLine();
+            }
+
+            developers.Sort();
+
+            Console.WriteLine("Sorted developers:");
+
+            foreach (IDeveloper developer in developers)
+            {
+                Console.WriteLine(developer);
+            }
+        }
+    }
+}

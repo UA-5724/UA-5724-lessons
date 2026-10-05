@@ -1,0 +1,92 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Program62
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            List<int> myColl = new List<int>();
+
+            Console.WriteLine("Enter 10 integers:");
+
+            for (int i = 0; i < 10; i++)
+            {
+                int value;
+
+                while (true)
+                {
+                    Console.Write($"Element [{i}]: ");
+
+                    if (int.TryParse(Console.ReadLine(), out value))
+                    {
+                        break;
+                    }
+
+                    Console.WriteLine("Invalid input. Please enter an integer.");
+                }
+
+                myColl.Add(value);
+            }
+
+            // 1. Find all positions of -10.
+            Console.WriteLine("\nPositions of -10:");
+
+            bool found = false;
+
+            for (int i = 0; i < myColl.Count; i++)
+            {
+                if (myColl[i] == -10)
+                {
+                    Console.WriteLine(i);
+                    found = true;
+                }
+            }
+
+            if (!found)
+            {
+                Console.WriteLine("-10 was not found.");
+            }
+
+            // 2. Remove all elements greater than 20.
+            myColl.RemoveAll(number => number > 20);
+
+            Console.WriteLine("\nAfter removing elements greater than 20:");
+            PrintCollection(myColl);
+
+            // 3. Insert new elements.
+            InsertSafely(myColl, 2, 1);
+            InsertSafely(myColl, 8, -3);
+            InsertSafely(myColl, 5, -4);
+
+            Console.WriteLine("\nAfter inserting new elements:");
+            PrintCollection(myColl);
+
+            // 4. Sort in ascending order.
+            myColl.Sort();
+
+            Console.WriteLine("\nSorted collection:");
+            PrintCollection(myColl);
+        }
+
+        static void InsertSafely(List<int> collection, int position, int value)
+        {
+            if (position >= 0 && position <= collection.Count)
+            {
+                collection.Insert(position, value);
+            }
+            else
+            {
+                Console.WriteLine(
+                    $"Value {value} could not be inserted at index {position}."
+                );
+            }
+        }
+
+        static void PrintCollection(List<int> collection)
+        {
+            Console.WriteLine(string.Join(" ", collection));
+        }
+    }
+}

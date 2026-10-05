@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Program64
+{
+    internal class Program
+    {
+        static void Main()
+        {
+            Dictionary<uint, string> persons =
+                new Dictionary<uint, string>();
+
+            Console.WriteLine("Enter information about 7 people.");
+
+            for (int i = 0; i < 7; i++)
+            {
+                uint id;
+
+                while (true)
+                {
+                    Console.Write($"Enter ID for person {i + 1}: ");
+
+                    if (!uint.TryParse(Console.ReadLine(), out id))
+                    {
+                        Console.WriteLine(
+                            "Invalid ID. Enter a non-negative integer."
+                        );
+                        continue;
+                    }
+
+                    if (persons.ContainsKey(id))
+                    {
+                        Console.WriteLine(
+                            "This ID already exists. Enter another ID."
+                        );
+                        continue;
+                    }
+
+                    break;
+                }
+
+                Console.Write($"Enter name for person {i + 1}: ");
+                string name = Console.ReadLine() ?? string.Empty;
+
+                persons.Add(id, name);
+            }
+
+            Console.Write("\nEnter an ID to search for: ");
+
+            if (!uint.TryParse(Console.ReadLine(), out uint searchId))
+            {
+                Console.WriteLine("Invalid ID.");
+                return;
+            }
+
+            if (persons.TryGetValue(searchId, out string personName))
+            {
+                Console.WriteLine($"Name: {personName}");
+            }
+            else
+            {
+                Console.WriteLine("ID not found.");
+            }
+        }
+    }
+}
